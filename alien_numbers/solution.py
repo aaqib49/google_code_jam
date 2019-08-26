@@ -2,6 +2,10 @@
 
 Usage:
 	solution.py <n> <s> <t>
+
+<n> is the number in source language
+<s> is source language
+<t> is target language
 '''
 
 from docopt import docopt
@@ -10,6 +14,7 @@ from docopt import docopt
 def run(num, source, target):
 	value = get_source_val(num, source)
 	result = get_target_num(value, target)
+	return result
 
 
 def get_source_val(num, source):
@@ -20,7 +25,7 @@ def get_source_val(num, source):
 	value = 0
 	for c, character in enumerate(num[::-1]):
 		value += embeddings[character] * (len(source) ** c)
-	print ("value:",  value)
+	# print ("value:",  value)
 	return value
 
 
@@ -52,7 +57,7 @@ def get_target_num(value, target):
 	target_str = ""
 	for i in range(len(target_num)):
 		target_str += target_embeddings[str(target_num[i])]
-	print("target_str: ", target_str)
+	# print("target_str: ", target_str)
 	return target_str
 
 
